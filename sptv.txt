@@ -558,7 +558,10 @@ footer{
       <h3>🎙️ Live Interviews</h3>
       <p>Direct conversations with influential personalities. Politicians, business leaders, and celebrities share insights and vision for the region.</p>
     </div>
-
+    <div class="featured-card123">
+      <h3>🎙️ Live Interviews</h3>
+      <p>Direct conversations with influential personalities. Politicians, business leaders, and celebrities share insights and vision for the region.</p>
+    </div>
     <div class="featured-card">
       <h3>⚡ Breaking News Alerts</h3>
       <p>Real-time updates delivered instantly. Never miss important news with our instant notification system for major events and developments.</p>
