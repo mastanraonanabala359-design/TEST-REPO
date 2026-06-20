@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SP TV - Latest News from Andhra Pradesh & Telangana</title>
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+body{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background:#f8f9fa;
+  color:#333;
+}
+/* HEADER & NAVIGATION */
+header{
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color:white;
+  padding:15px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+header h1{
+  font-size:32px;
+  font-weight:700;
+  letter-spacing:2px;
+}
+header h1 .red{
+  color:#e60023;
+}
+nav{
+  display:flex;
+  gap:30px;
+}
+nav a{
+  color:white;
+  text-decoration:none;
+  font-weight:500;
+  font-size:16px;
+  transition: all 0.3s ease;
+  position:relative;
+  padding-bottom:5px;
+}
+nav a:hover{
+  color:#e60023;
+}
+nav a::after{
+  content:'';
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:0;
+  height:2px;
+  background:#e60023;
+  transition: width 0.3s ease;
+}
+nav a:hover::after{
+  width:100%;
+}
+/* BREAKING NEWS */
+.breaking-news{
+  background: linear-gradient(90deg, #e60023 0%, #cc001f 100%);
+  color:white;
+  padding:12px 40px;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  font-weight:600;
+  animation: blink 1s infinite;
+}
+.breaking-label{
+  background:white;
+  color:#e60023;
+  padding:5px 15px;
+  border-radius:20px;
+  font-weight:700;
+  font-size:12px;
+  animation: pulse 2s infinite;
+}
+@keyframes blink{
+  0%, 100%{opacity:1;}
+  50%{opacity:0.8;}
+}
+@keyframes pulse{
+  0%, 100%{transform:scale(1);}
+  50%{transform:scale(1.05);}
+}
+/* HERO SECTION */
+.hero-section{
+  background: linear-gradient(135deg, rgba(230, 0, 35, 0.9) 0%, rgba(26, 26, 46, 0.95) 100%), 
+              url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23e60023" width="1200" height="600"/></svg>');
+  background-size:cover;
+  background-position:center;
+  color:white;
+  padding:100px 40px;
+  text-align:center;
+  min-height:500px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+.hero-section h2{
+  font-size:54px;
+  margin-bottom:20px;
+  font-weight:700;
+  text-shadow:2px 2px 4px rgba(0,0,0,0.3);
+}
+.hero-section p{
+  font-size:22px;
+  margin-bottom:30px;
+  max-width:600px;
+  text-shadow:1px 1px 3px rgba(0,0,0,0.3);
+}
+.cta-buttons{
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.btn{
+  padding:14px 35px;
+  font-size:16px;
+  border:none;
+  border-radius:5px;
+  cursor:pointer;
+  font-weight:600;
+  transition: all 0.3s ease;
+  text-decoration:none;
+  display:inline-block;
+}
+.btn-primary{
+  background:white;
+  color:#e60023;
+}
+.btn-primary:hover{
+  background:#f0f0f0;
+  transform:translateY(-3px);
+  box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
+.btn-secondary{
+  background:rgba(255,255,255,0.2);
+  color:white;
+  border:2px solid white;
+}
+.btn-secondary:hover{
+  background:white;
+  color:#e60023;
+  transform:translateY(-3px);
+}
+/* SECTIONS */
+.section{
+  padding:60px 40px;
+  max-width:1400px;
+  margin:0 auto;
+}
+.section h2{
+  font-size:40px;
+  margin-bottom:40px;
+  color:#1a1a2e;
+  font-weight:700;
+  position:relative;
+  padding-bottom:15px;
+}
+.section h2::after{
+  content:'';
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:60px;
+  height:4px;
+  background:#e60023;
+  border-radius:2px;
+}
+/* NEWS GRID */
+.news-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap:25px;
+  margin-top:30px;
+}
+.news-card{
+  background:white;
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 4px 15px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  cursor:pointer;
+  display:flex;
+  flex-direction:column;
+}
+.news-card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 12px 30px rgba(230, 0, 35, 0.15);
+}
+.news-card img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  display:block;
+}
+.news-card-content{
+  padding:20px;
+  flex-grow:1;
+  display:flex;
+  flex-direction:column;
+}
+.news-category{
+  display:inline-block;
+  background:#e60023;
+  color:white;
+  padding:5px 12px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:600;
+  margin-bottom:10px;
+  width:fit-content;
+}
+.news-card h3{
+  font-size:20px;
+  margin-bottom:10px;
+  color:#1a1a2e;
+  line-height:1.4;
+  font-weight:600;
+}
+.news-card p{
+  color:#666;
+  font-size:14px;
+  line-height:1.6;
+  margin-bottom:15px;
+  flex-grow:1;
+}
+.news-meta{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  color:#999;
+  font-size:12px;
+  border-top:1px solid #eee;
+  padding-top:12px;
+}
+/* FEATURED SECTION */
+.featured-section{
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color:white;
+}
+.featured-section h2{
+  color:white;
+  margin-bottom:40px;
+}
+.featured-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap:25px;
+  margin-top:30px;
+}
+.featured-card{
+  background:rgba(255,255,255,0.05);
+  border-radius:10px;
+  padding:25px;
+  border:1px solid rgba(255,255,255,0.1);
+  transition: all 0.3s ease;
+  cursor:pointer;
+}
+.featured-card:hover{
+  background:rgba(255,255,255,0.1);
+  border-color:#e60023;
+  transform:translateY(-5px);
+}
+.featured-card h3{
+  font-size:22px;
+  margin-bottom:15px;
+  font-weight:600;
+}
+.featured-card p{
+  color:#ccc;
+  line-height:1.6;
+  font-size:15px;
+}
+/* CEO SECTION */
+.ceo-section{
+  text-align:center;
+  background:#fff;
+}
+.ceo-card{
+  background:white;
+  padding:40px;
+  max-width:500px;
+  margin:0 auto;
+  border-radius:10px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.1);
+}
+.ceo-card img{
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  object-fit:cover;
+  margin-bottom:25px;
+  border:5px solid #e60023;
+  transition: transform 0.3s ease;
+}
+.ceo-card:hover img{
+  transform:scale(1.05);
+}
+.ceo-card h3{
+  font-size:24px;
+  color:#1a1a2e;
+  margin-bottom:10px;
+  font-weight:700;
+}
+.ceo-card .position{
+  color:#e60023;
+  font-weight:600;
+  font-size:16px;
+  margin-bottom:20px;
+}
+.ceo-card p{
+  color:#666;
+  line-height:1.8;
+  font-size:15px;
+  margin-bottom:10px;
+}
+/* FOOTER */
+footer{
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color:white;
+  padding:50px 40px 25px;
+  margin-top:60px;
+}
+.footer-content{
+  max-width:1400px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap:40px;
+  margin-bottom:40px;
+}
+.footer-column h4{
+  margin-bottom:15px;
+  font-size:18px;
+  font-weight:600;
+}
+.footer-column ul{
+  list-style:none;
+}
+.footer-column a{
+  color:#ccc;
+  text-decoration:none;
+  font-size:14px;
+  line-height:2;
+  transition: color 0.3s ease;
+}
+.footer-column a:hover{
+  color:#e60023;
+}
+.social-links{
+  display:flex;
+  gap:15px;
+  margin-top:15px;
+}
+.social-links a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.1);
+  color:white;
+  text-decoration:none;
+  transition: all 0.3s ease;
+  font-size:18px;
+}
+.social-links a:hover{
+  background:#e60023;
+  transform:scale(1.1);
+}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,0.1);
+  padding-top:25px;
+  text-align:center;
+  color:#999;
+  font-size:14px;
+}
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  header{
+    padding:12px 20px;
+  }
+  header h1{
+    font-size:24px;
+  }
+  nav{
+    gap:15px;
+    font-size:14px;
+  }
+  .hero-section{
+    padding:60px 20px;
+  }
+  .hero-section h2{
+    font-size:36px;
+  }
+  .hero-section p{
+    font-size:16px;
+  }
+  .section{
+    padding:40px 20px;
+  }
+  .section h2{
+    font-size:28px;
+  }
+  .news-grid{
+    grid-template-columns: 1fr;
+  }
+  .featured-grid{
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>S<span class="red">P</span> TV</h1>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#news">News</a>
+    <a href="#shows">Shows</a>
+    <a href="#about">About</a>
+    <a href="#ceo">Leadership</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- BREAKING NEWS -->
+<div class="breaking-news">
+  <span class="breaking-label">🔴 BREAKING</span>
+  <span>Stay updated with the latest news from Andhra Pradesh and Telangana</span>
+</div>
+
+<!-- HERO SECTION -->
+<section id="home" class="hero-section">
+  <h2>Your Trusted News Source</h2>
+  <p>Get the latest updates from Andhra Pradesh & Telangana</p>
+  <div class="cta-buttons">
+    <button class="btn btn-primary" onclick="alert('Subscribe feature coming soon!')">Subscribe Now</button>
+    <button class="btn btn-secondary" onclick="alert('Watch Live feature coming soon!')">Watch Live</button>
+  </div>
+</section>
+
+<!-- LATEST NEWS SECTION -->
+<section id="news" class="section">
+  <h2>Latest News</h2>
+  <div class="news-grid">
+    <div class="news-card">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%231a1a2e' width='400' height='300'/%3E%3Crect fill='%23e60023' x='0' y='0' width='200' height='300'/%3E%3Ctext x='200' y='150' font-size='48' font-weight='bold' text-anchor='middle' fill='white' dominant-baseline='middle'%3EPOLITICS%3C/text%3E%3Ctext x='200' y='220' font-size='16' text-anchor='middle' fill='%23ccc'%3EPolitical News%3C/text%3E%3C/svg%3E" alt="Politics News">
+      <div class="news-card-content">
+        <span class="news-category">Politics</span>
+        <h3>Assembly Sessions Begin: Key Decisions Expected</h3>
+        <p>State assembly convenes with important legislative agenda. Political leaders gather to discuss crucial policies affecting citizens across AP and TG.</p>
+        <div class="news-meta">
+          <span>2 hours ago</span>
+          <span>By SP TV</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="news-card">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23ffffff' width='400' height='300'/%3E%3Crect fill='%2327ae60' x='0' y='0' width='200' height='300'/%3E%3Ctext x='200' y='80' font-size='40' font-weight='bold' text-anchor='middle' fill='%23333'%3E%24%3C/text%3E%3Cpolyline points='80,200 120,120 160,140 200,80 240,100 280,40 320,120' stroke='%23f39c12' stroke-width='3' fill='none'/%3E%3Ctext x='200' y='260' font-size='20' font-weight='bold' text-anchor='middle' fill='%23333'%3EBUSINESS%3C/text%3E%3C/svg%3E" alt="Business News">
+      <div class="news-card-content">
+        <span class="news-category">Business</span>
+        <h3>Economic Growth Boosts Regional Development</h3>
+        <p>Recent economic data shows positive growth trajectory. Industries and businesses report increased investment and expanded operations in the region.</p>
+        <div class="news-meta">
+          <span>5 hours ago</span>
+          <span>By SP TV</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="news-card">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23ff6b35' width='400' height='300'/%3E%3Ccircle cx='200' cy='100' r='40' fill='%23fff' stroke='%23333' stroke-width='2'/%3E%3Crect x='160' y='180' width='80' height='80' fill='%23ffd700'/%3E%3Ctext x='200' y='250' font-size='24' font-weight='bold' text-anchor='middle' fill='white'%3ESPORTS%3C/text%3E%3C/svg%3E" alt="Sports News">
+      <div class="news-card-content">
+        <span class="news-category">Sports</span>
+        <h3>Local Teams Shine in National Championship</h3>
+        <p>Regional sports teams demonstrate excellence on national platform. Exciting matches and outstanding performances capture the hearts of fans.</p>
+        <div class="news-meta">
+          <span>8 hours ago</span>
+          <span>By SP TV</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="news-card">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%239b59b6' width='400' height='300'/%3E%3Crect x='80' y='50' width='240' height='160' fill='%23ecf0f1' stroke='%23f39c12' stroke-width='3' rx='10'/%3E%3Ccircle cx='120' cy='90' r='12' fill='%23e74c3c'/%3E%3Ccircle cx='200' cy='110' r='12' fill='%233498db'/%3E%3Ccircle cx='280' cy='85' r='12' fill='%2327ae60'/%3E%3Ctext x='200' y='260' font-size='24' font-weight='bold' text-anchor='middle' fill='white'%3EENTERTAINMENT%3C/text%3E%3C/svg%3E" alt="Entertainment News">
+      <div class="news-card-content">
+        <span class="news-category">Entertainment</span>
+        <h3>Tollywood Stars Shine at Annual Gala Night</h3>
+        <p>Biggest entertainment event features top celebrities. Red carpet excitement as industry's finest celebrate film excellence and achievements.</p>
+        <div class="news-meta">
+          <span>12 hours ago</span>
+          <span>By SP TV</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="news-card">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%233498db' width='400' height='300'/%3E%3Crect fill='%232c3e50' x='0' y='150' width='400' height='150'/%3E%3Ccircle cx='100' cy='80' r='30' fill='%23f1c40f'/%3E%3Crect x='150' y='100' width='30' height='80' fill='%232ecc71'/%3E%3Crect x='200' y='120' width='30' height='60' fill='%232ecc71'/%3E%3Crect x='250' y='90' width='30' height='90' fill='%232ecc71'/%3E%3Ctext x='200' y='260' font-size='20' font-weight='bold' text-anchor='middle' fill='white'%3ETECHNOLOGY%3C/text%3E%3C/svg%3E" alt="Technology News">
+      <div class="news-card-content">
+        <span class="news-category">Technology</span>
+        <h3>Tech Innovation Hub Launches in Hyderabad</h3>
+        <p>New technology center opens doors to startups and innovators. Massive investment and infrastructure support boost entrepreneurship in the region.</p>
+        <div class="news-meta">
+          <span>15 hours ago</span>
+          <span>By SP TV</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="news-card">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%236c7a89' width='400' height='300'/%3E%3Crect fill='%23ecf0f1' x='80' y='80' width='240' height='140' rx='10'/%3E%3Ccircle cx='200' cy='110' r='35' fill='%23fff' stroke='%23f39c12' stroke-width='2'/%3E%3Cpath d='M 130 200 Q 200 170 270 200' stroke='%233498db' stroke-width='3' fill='none'/%3E%3Ctext x='200' y='260' font-size='20' font-weight='bold' text-anchor='middle' fill='white'%3EWEATHER%3C/text%3E%3C/svg%3E" alt="Weather News">
+      <div class="news-card-content">
+        <span class="news-category">Weather</span>
+        <h3>Monsoon Forecast: Relief Expected by Weekend</h3>
+        <p>Weather department predicts favorable conditions ahead. Farmers and communities prepare for seasonal rainfall and agricultural opportunities.</p>
+        <div class="news-meta">
+          <span>1 day ago</span>
+          <span>By SP TV</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED SHOWS SECTION -->
+<section id="shows" class="featured-section">
+  <h2>Featured Shows & Programs</h2>
+  <div class="featured-grid">
+    <div class="featured-card">
+      <h3>🎬 Prime Time News</h3>
+      <p>Comprehensive news coverage with in-depth analysis. Join our expert journalists for daily updates on politics, business, and breaking news.</p>
+    </div>
+
+    <div class="featured-card">
+      <h3>📺 Special Reports</h3>
+      <p>Investigative journalism at its best. We uncover stories that matter and bring truth to our viewers with detailed research and analysis.</p>
+    </div>
+
+    <div class="featured-card">
+      <h3>🎙️ Live Interviews</h3>
+      <p>Direct conversations with influential personalities. Politicians, business leaders, and celebrities share insights and vision for the region.</p>
+    </div>
+
+    <div class="featured-card">
+      <h3>⚡ Breaking News Alerts</h3>
+      <p>Real-time updates delivered instantly. Never miss important news with our instant notification system for major events and developments.</p>
+    </div>
+
+    <div class="featured-card">
+      <h3>🎯 Analysis & Opinion</h3>
+      <p>Expert commentary and deep analysis. Understand the bigger picture with perspectives from leading analysts and opinion makers.</p>
+    </div>
+
+    <div class="featured-card">
+      <h3>📰 Weekly Highlights</h3>
+      <p>Best stories of the week compiled. Get a comprehensive summary of important events and developments from across AP and TG.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section id="about" class="section">
+  <h2>About SP TV</h2>
+  <p style="font-size:18px; line-height:1.8; color:#666; max-width:900px; margin:0 auto;">
+    SP TV is a leading news and entertainment platform dedicated to providing quality journalism and engaging content to audiences across Andhra Pradesh and Telangana. With a commitment to truth, transparency, and timely reporting, we have become the trusted source for millions of viewers. Our experienced team of journalists, reporters, and content creators work round the clock to bring you the most relevant and impactful stories from politics, business, sports, entertainment, and more.
+  </p>
+</section>
+
+<!-- CEO LEADERSHIP SECTION -->
+<section id="ceo" class="section">
+  <h2 style="text-align:center;">Leadership</h2>
+  <div class="ceo-card">
+    <img src="Images/WhatsApp Image 2026-06-18 at 14.21.55 (1).png" alt="CEO Photo">
+    <h3>Mr. Sangabatthula Venkateswara</h3>
+    <p class="position">Chief Executive Officer & Founder</p>
+    <p>
+      Mr. S. Venkateswarlu brings more than 15 years of extensive experience in the media and broadcasting industry. Under his visionary leadership, SP TV has emerged as a trusted platform for quality news and entertainment content. His commitment to journalistic integrity and viewer satisfaction has shaped the channel's reputation for credibility and excellence. Mr. Venkateswarlu continues to drive innovation and expansion, ensuring SP TV remains at the forefront of regional broadcasting.
+    </p>
+  </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section id="contact" class="section" style="background:#fff; text-align:center;">
+  <h2>Get In Touch</h2>
+  <div style="max-width:600px; margin:0 auto; background:#f8f9fa; padding:40px; border-radius:10px;">
+    <p style="font-size:18px; margin-bottom:20px; color:#666;">
+      We'd love to hear from you. Reach out for inquiries, feedback, or advertising opportunities.
+    </p>
+    <div style="display:grid; gap:20px; margin-bottom:30px;">
+      <div>
+        <strong style="color:#e60023; display:block; margin-bottom:5px;">Email</strong>
+        <p style="color:#666;">info@sptv.com</p>
+      </div>
+      <div>
+        <strong style="color:#e60023; display:block; margin-bottom:5px;">Phone</strong>
+        <p style="color:#666;">+91 8099047577</p>
+      </div>
+      <div>
+        <strong style="color:#e60023; display:block; margin-bottom:5px;">Address</strong>
+        <p style="color:#666;">Andhra Pradesh & Telangana Region, India</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-column">
+      <h4>SP TV</h4>
+      <p style="color:#ccc; font-size:14px; line-height:1.8;">Your trusted source for news and entertainment from Andhra Pradesh and Telangana. Bringing truth and innovation to your screens.</p>
+      <div class="social-links">
+        <a href="#" title="Facebook">f</a>
+        <a href="#" title="Twitter">𝕏</a>
+        <a href="#" title="YouTube">▶</a>
+        <a href="#" title="Instagram">📷</a>
+      </div>
+    </div>
+
+    <div class="footer-column">
+      <h4>News</h4>
+      <ul>
+        <li><a href="#news">Latest News</a></li>
+        <li><a href="#news">Breaking News</a></li>
+        <li><a href="#news">Special Reports</a></li>
+        <li><a href="#news">Analysis</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Shows</h4>
+      <ul>
+        <li><a href="#shows">Prime Time News</a></li>
+        <li><a href="#shows">Special Reports</a></li>
+        <li><a href="#shows">Live Interviews</a></li>
+        <li><a href="#shows">Weekly Highlights</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#ceo">Leadership</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact">Advertise With Us</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2026 SP TV. All Rights Reserved. | Privacy Policy | Terms of Service</p>
+  </div>
+</footer>
+
+</body>
+</html>
